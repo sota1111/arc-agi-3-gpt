@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "phase": "screen",
+  "candidate": "deterministic-legal-v1",
+  "champion": "deterministic-legal-v1",
+  "command": ["python3", "main.py"],
+  "fixture": {
+    "path": "tests/fixtures/replay.jsonl",
+    "sha256": "626abefb0f8e38be8e858dec05cc1f80a42d39b9a32448b965d9346349e35127"
+  },
+  "repetitions": 3,
+  "timeout_seconds": 2,
+  "pass_threshold": 1.0,
+  "artifact": "artifacts/screen/result.json"
+}
