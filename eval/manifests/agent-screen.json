@@ -19,5 +19,9 @@
     "min_progress_improvement": 0.1
   },
   "kaggle_exec_verified": false,
+  "candidate_artifact": {
+    "path": "artifacts/candidates/stateful-gpt-legal-v1.zip",
+    "sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624"
+  },
   "artifact": "artifacts/agent-screen/result.json"
 }

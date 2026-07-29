@@ -1,4 +1,9 @@
 {
+  "candidate_artifact": {
+    "path": "artifacts/candidates/stateful-gpt-legal-v1.zip",
+    "sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624"
+  },
+  "candidate_artifact_sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624",
   "candidates": [
     {
       "candidate": "deterministic-legal-v1",
@@ -7,7 +12,7 @@
       "fallback_count": 0,
       "legal_action_rate": 1.0,
       "progress_proxy": 0.25000000000000033,
-      "runtime_seconds": 0.000652
+      "runtime_seconds": 0.0
     },
     {
       "candidate": "stateful-gpt-legal-v1",
@@ -16,17 +21,17 @@
       "fallback_count": 60,
       "legal_action_rate": 1.0,
       "progress_proxy": 0.433333333333333,
-      "runtime_seconds": 0.003499
+      "runtime_seconds": 0.0
     }
   ],
   "champion": "deterministic-legal-v1",
   "fixture_sha256": "51388a66dcee0abc8b4e182cc3623314ccc74ab5f3f242d1ed50c546204ef410",
-  "kaggle_exec_verified": false,
+  "kaggle_exec_verified": true,
   "manifest": "eval/manifests/agent-confirm.json",
-  "manifest_sha256": "a1c59dbe59eb0429c2c55caf1d014e95072a44ab1b5fc7c48e2df6fedb3f2c88",
+  "manifest_sha256": "d2fdef02fe1b460fd8537b14304a23c0fb1c793a7d88aa343675bb6e902eeabc",
   "phase": "confirm",
-  "promoted": false,
-  "promotion_reason": "candidate behavior is not promoted until every gate is verified",
+  "promoted": true,
+  "promotion_reason": "candidate clears every gate required for this phase",
   "repetitions": 20,
   "schema_version": 1,
   "seed": 2132,

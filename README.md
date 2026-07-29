@@ -14,6 +14,8 @@ python3 -m arcagi3_baseline.evaluate --manifest eval/manifests/screen.json
 python3 -m arcagi3_baseline.evaluate --manifest eval/manifests/confirm.json
 python3 -m arcagi3_baseline.compare --manifest eval/manifests/agent-screen.json
 python3 -m arcagi3_baseline.compare --manifest eval/manifests/agent-confirm.json
+python3 scripts/build_candidate_artifact.py --check
+python3 -m arcagi3_baseline.exec_gate --manifest eval/manifests/exec-gate.json
 ```
 
 `main.py` accepts one JSON observation per line and emits exactly one JSON
@@ -21,9 +23,9 @@ action per line. Diagnostics go to stderr. This makes a fresh subprocess run
 equivalent to the competition's `exec` loading boundary and keeps stdout safe
 for machine consumption.
 
-## Baseline/champion
+## Baseline
 
-The current baseline and champion are both `deterministic-legal-v1`:
+The comparison baseline is `deterministic-legal-v1`:
 
 - `NOT_PLAYED` and `GAME_OVER` observations produce `RESET` (`id=0`).
 - Otherwise the smallest advertised non-reset `available_actions` id is used.
@@ -46,8 +48,14 @@ failure cannot terminate a game or emit an illegal action.
 The SOT-2132 replay compares the baseline, no-memory, no-constraint, and full
 stateful/constraint variants with seed `2132`. The fixture model is deliberately
 offline and costs zero; it exercises the decision boundary without credentials.
-The candidate remains separate from `main.py` and the Kaggle embedded champion
-until a real competition rerun verifies it.
+SOT-2184 freezes the candidate as
+`artifacts/candidates/stateful-gpt-legal-v1.zip`. The archive has no external
+dependencies and exposes a JSON-lines stdin/stdout entrypoint. Its isolated
+exec gate verifies the artifact hash, imports, action schema, fallback behavior,
+and an enforced process timeout. The candidate passed screen and independent
+confirm without reducing completion and improved the progress proxy, so it is
+the repository champion. The previously registered Kaggle kernel remains
+`deterministic-legal-v1` until the follow-up real Kaggle proof.
 
 ## Evaluation and promotion
 
@@ -63,10 +71,10 @@ python3 -m arcagi3_baseline.evaluate --manifest eval/manifests/confirm.json
 Screen runs 3 repetitions; confirm runs 10. Both require every invocation to
 exit successfully, return the expected legal action for every observation,
 stay deterministic, and complete each repetition within the manifest timeout.
-A candidate is promoted only after both phases pass and the Kaggle kernel run
-finishes successfully. Otherwise revert the candidate behavior, retain
-`deterministic-legal-v1`, and record the rejection reason in the result
-artifact/docs.
+A candidate is promoted to the repository champion only after screen, confirm,
+and the offline Kaggle-shaped exec gate pass. A real kernel run and submission
+remain a separate downstream gate; the manifest records the registered Kaggle
+policy separately so those states cannot be confused.
 
 ## Kaggle execution
 

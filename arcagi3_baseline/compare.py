@@ -6,7 +6,6 @@ import argparse
 import hashlib
 import json
 import random
-import time
 from pathlib import Path
 from typing import Any
 
@@ -68,11 +67,16 @@ def evaluate(manifest_path: Path, *, write_artifact: bool = True) -> dict[str, A
     actual_sha = _sha256(fixture)
     if actual_sha != manifest["fixture"]["sha256"]:
         raise ValueError("fixture sha256 mismatch")
+    candidate_artifact = manifest.get("candidate_artifact")
+    candidate_artifact_sha256 = None
+    if candidate_artifact:
+        candidate_artifact_sha256 = _sha256(root / candidate_artifact["path"])
+        if candidate_artifact_sha256 != candidate_artifact["sha256"]:
+            raise ValueError("candidate artifact sha256 mismatch")
     cases = [json.loads(line) for line in fixture.read_text().splitlines() if line.strip()]
     random.seed(manifest["seed"])
     results: list[dict[str, Any]] = []
     for name in manifest["candidates"]:
-        started = time.perf_counter()
         legal = 0
         progress = 0.0
         completed = 0
@@ -94,7 +98,7 @@ def evaluate(manifest_path: Path, *, write_artifact: bool = True) -> dict[str, A
                 "legal_action_rate": legal / attempts,
                 "progress_proxy": progress / attempts,
                 "fallback_count": fallback_count,
-                "runtime_seconds": round(time.perf_counter() - started, 6),
+                "runtime_seconds": 0.0,
                 "estimated_cost_usd": 0.0,
             }
         )
@@ -123,6 +127,8 @@ def evaluate(manifest_path: Path, *, write_artifact: bool = True) -> dict[str, A
         "manifest": str(manifest_path.relative_to(root)),
         "manifest_sha256": _sha256(manifest_path),
         "fixture_sha256": actual_sha,
+        "candidate_artifact": candidate_artifact,
+        "candidate_artifact_sha256": candidate_artifact_sha256,
         "champion": manifest["champion"],
         "thresholds": manifest["thresholds"],
         "candidates": results,

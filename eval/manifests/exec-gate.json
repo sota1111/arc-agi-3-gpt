@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "candidate": "stateful-gpt-legal-v1",
+  "candidate_artifact": {
+    "path": "artifacts/candidates/stateful-gpt-legal-v1.zip",
+    "sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624"
+  },
+  "fixture": {
+    "path": "tests/fixtures/agent_replay.jsonl",
+    "sha256": "51388a66dcee0abc8b4e182cc3623314ccc74ab5f3f242d1ed50c546204ef410"
+  },
+  "limits": {
+    "process_timeout_seconds": 5,
+    "timeout_probe_seconds": 0.05,
+    "minimum_fallbacks": 3
+  },
+  "artifact": "artifacts/exec-gate/result.json"
+}

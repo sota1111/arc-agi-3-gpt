@@ -1,4 +1,9 @@
 {
+  "candidate_artifact": {
+    "path": "artifacts/candidates/stateful-gpt-legal-v1.zip",
+    "sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624"
+  },
+  "candidate_artifact_sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624",
   "candidates": [
     {
       "candidate": "deterministic-legal-v1",
@@ -7,7 +12,7 @@
       "fallback_count": 0,
       "legal_action_rate": 1.0,
       "progress_proxy": 0.24999999999999994,
-      "runtime_seconds": 0.000118
+      "runtime_seconds": 0.0
     },
     {
       "candidate": "gpt-no-memory-v1",
@@ -16,7 +21,7 @@
       "fallback_count": 9,
       "legal_action_rate": 1.0,
       "progress_proxy": 0.3,
-      "runtime_seconds": 0.000493
+      "runtime_seconds": 0.0
     },
     {
       "candidate": "gpt-no-constraints-v1",
@@ -25,7 +30,7 @@
       "fallback_count": 18,
       "legal_action_rate": 1.0,
       "progress_proxy": 0.24999999999999994,
-      "runtime_seconds": 0.000454
+      "runtime_seconds": 0.0
     },
     {
       "candidate": "stateful-gpt-legal-v1",
@@ -34,14 +39,14 @@
       "fallback_count": 9,
       "legal_action_rate": 1.0,
       "progress_proxy": 0.43333333333333335,
-      "runtime_seconds": 0.000537
+      "runtime_seconds": 0.0
     }
   ],
   "champion": "deterministic-legal-v1",
   "fixture_sha256": "51388a66dcee0abc8b4e182cc3623314ccc74ab5f3f242d1ed50c546204ef410",
   "kaggle_exec_verified": false,
   "manifest": "eval/manifests/agent-screen.json",
-  "manifest_sha256": "b2dd0116609c17c001d6592114fe934dcd32277791c50adc466ac51604b47d4f",
+  "manifest_sha256": "c4736c281933dcbda36b9d885cb92d3f1c86218274c09047670f3e4e2b10cf5a",
   "phase": "screen",
   "promoted": true,
   "promotion_reason": "candidate clears every gate required for this phase",

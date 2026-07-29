@@ -25,6 +25,18 @@ def verify_file(path: str, expected: str) -> None:
 
 def build() -> tuple[Path, str]:
     manifest = json.loads(MANIFEST.read_text())
+    if manifest["champion"] == "stateful-gpt-legal-v1":
+        try:
+            from scripts.build_candidate_artifact import build as build_candidate
+        except ModuleNotFoundError:
+            from build_candidate_artifact import build as build_candidate
+
+        if sha256(ROOT / manifest["candidate_manifest"]) != manifest["candidate_manifest_sha256"]:
+            raise ValueError("candidate manifest hash mismatch")
+        output, digest = build_candidate()
+        if output.relative_to(ROOT).as_posix() != manifest["artifact"]["path"]:
+            raise ValueError("champion artifact path does not match candidate artifact")
+        return output, digest
     for path, expected in manifest["package_files"].items():
         verify_file(path, expected)
     evaluation = manifest["evaluation"]
