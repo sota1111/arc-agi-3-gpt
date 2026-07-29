@@ -64,7 +64,7 @@ def test_parser_accepts_json_fence_and_rejects_prose() -> None:
         parse_model_action("choose action 2")
 
 
-def test_screen_winner_is_not_promoted_without_confirm_exec_gate() -> None:
+def test_screen_winner_is_promoted_after_confirm_exec_gate() -> None:
     root = Path(__file__).resolve().parents[1]
     screen = evaluate(root / "eval/manifests/agent-screen.json", write_artifact=False)
     confirm = evaluate(root / "eval/manifests/agent-confirm.json", write_artifact=False)
@@ -72,4 +72,6 @@ def test_screen_winner_is_not_promoted_without_confirm_exec_gate() -> None:
     assert screen["seed"] == confirm["seed"] == 2132
     assert screen["fixture_sha256"] == confirm["fixture_sha256"]
     assert screen["promoted"] is True
-    assert confirm["promoted"] is False
+    assert confirm["promoted"] is True
+    assert confirm["kaggle_exec_verified"] is True
+    assert confirm["candidate_artifact_sha256"] == screen["candidate_artifact_sha256"]

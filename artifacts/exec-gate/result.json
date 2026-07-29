@@ -1,0 +1,38 @@
+{
+  "artifact": "artifacts/candidates/stateful-gpt-legal-v1.zip",
+  "artifact_members": [
+    "arcagi3_baseline/__init__.py",
+    "arcagi3_baseline/agent.py",
+    "arcagi3_baseline/candidate_entrypoint.py",
+    "arcagi3_baseline/contract.py"
+  ],
+  "artifact_sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624",
+  "candidate": "stateful-gpt-legal-v1",
+  "checks": {
+    "action_schema": true,
+    "artifact_hash": true,
+    "dependency_free": true,
+    "fallback": true,
+    "hard_timeout": true,
+    "standard_io": true
+  },
+  "command": [
+    "/usr/bin/python3",
+    "-I",
+    "-c",
+    "import sys;sys.path.insert(0,'.');from arcagi3_baseline.candidate_entrypoint import main;raise SystemExit(main())"
+  ],
+  "external_imports": [],
+  "fallback_count": 4,
+  "fixture_sha256": "51388a66dcee0abc8b4e182cc3623314ccc74ab5f3f242d1ed50c546204ef410",
+  "limits": {
+    "minimum_fallbacks": 3,
+    "process_timeout_seconds": 5,
+    "timeout_probe_seconds": 0.05
+  },
+  "manifest": "eval/manifests/exec-gate.json",
+  "manifest_sha256": "5b4d0064555fb0c3a8307c55dc9cb2b4e8c7851f146bd55723b4ddc41408eddd",
+  "passed": true,
+  "records": 6,
+  "schema_version": 1
+}

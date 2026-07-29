@@ -1,43 +1,41 @@
 {
-  "schema_version": 1,
-  "champion": "deterministic-legal-v1",
+  "schema_version": 2,
+  "champion": "stateful-gpt-legal-v1",
   "competition": "arc-prize-2026-arc-agi-3",
-  "source_commit": "7a145f8d68a93c09a51c69a2bce96388f7cba632",
-  "kernel": {
-    "ref": "sota1111/arc-agi-3-gpt-registered-champion",
-    "version": 5,
-    "status": "COMPLETE"
-  },
-  "package_files": {
-    "kaggle/kernel/kernel-metadata.json": "0ed5fefd9342b97a7d94ab5969b183dc6e0763c37065e5c22ff223a9324f55f4",
-    "kaggle/kernel/submit.py": "bc8e5c9654c3ba2a54fc8424f0091aa779a678b11256ac1ff7aea11fb1d8b297"
-  },
+  "source_commit": "SOT-2132:a83f243",
+  "candidate_manifest": "candidate/manifest.json",
+  "candidate_manifest_sha256": "f464ac8cd8d25b988913aa63bab4f0cae76366c12bc65dd01d40d3c4d19bfe47",
   "evaluation": {
-    "screen_manifest": "eval/manifests/screen.json",
-    "screen_manifest_sha256": "d10236e316ab4bee4962925206c4ed43cb24950e560504dc21197929e5a5f3ca",
-    "screen_result": "artifacts/screen/result.json",
-    "screen_result_sha256": "3db0d000a014c9a4edada35d6f457d66612c574a2ed6f4851249d6baec374d3e",
-    "confirm_manifest": "eval/manifests/confirm.json",
-    "confirm_manifest_sha256": "9e16dd2560e7dbbb60f351fe0e7450c6efe0a8144108a1f10ddaa528dbf7d0bc",
-    "confirm_result": "artifacts/confirm/result.json",
-    "confirm_result_sha256": "6f68d6305ae64de7686cbcd81ddeb300b2861080f4ed3436740169ea868c1aa2"
+    "screen_manifest": "eval/manifests/agent-screen.json",
+    "screen_manifest_sha256": "c4736c281933dcbda36b9d885cb92d3f1c86218274c09047670f3e4e2b10cf5a",
+    "screen_result": "artifacts/agent-screen/result.json",
+    "screen_result_sha256": "3c382237954dbf98149dee79ab76ee0ec7c3018af5a939603a46cfa9a0183307",
+    "confirm_manifest": "eval/manifests/agent-confirm.json",
+    "confirm_manifest_sha256": "d2fdef02fe1b460fd8537b14304a23c0fb1c793a7d88aa343675bb6e902eeabc",
+    "confirm_result": "artifacts/agent-confirm/result.json",
+    "confirm_result_sha256": "f8625e9d61806891a5781c960b067fee28fd79d9ea61c2af9aed025d439ac9f5",
+    "exec_manifest": "eval/manifests/exec-gate.json",
+    "exec_manifest_sha256": "5b4d0064555fb0c3a8307c55dc9cb2b4e8c7851f146bd55723b4ddc41408eddd",
+    "exec_result": "artifacts/exec-gate/result.json",
+    "exec_result_sha256": "9b9f2268d4c44d4018b30b02ab808dd1286bfacfbec9b94c90f8c280bd402f84"
   },
   "candidate_decision": {
     "candidate": "stateful-gpt-legal-v1",
-    "confirm_result": "champion/evidence/agent-confirm.json",
-    "confirm_result_sha256": "c69881bc68ca5d44963d8843f7deadf28a077a3dce3a9df6c2ab1b0f64f0cd3b",
-    "promoted": false,
-    "reason": "Kaggle exec gate is false; production remains deterministic-legal-v1"
+    "promoted": true,
+    "reason": "screen and independent confirm improve progress without reducing completion; offline Kaggle exec gate passed"
   },
-  "submission": {
-    "ref": 55067146,
+  "registered_kaggle_submission": {
+    "champion": "deterministic-legal-v1",
+    "kernel_ref": "sota1111/arc-agi-3-gpt-registered-champion",
+    "kernel_version": 5,
+    "submission_ref": 55067146,
     "status": "COMPLETE",
     "public_score": 0.08,
-    "submitted_at_utc": "2026-07-29T00:00:19.957Z",
-    "description": "SOT-2131 deterministic-legal-v1 baseline"
+    "submitted_at_utc": "2026-07-29T00:00:19.957Z"
   },
+  "next_gate": "Kaggle kernel execution and submission proof for stateful-gpt-legal-v1",
   "artifact": {
-    "path": "artifacts/champion/deterministic-legal-v1.zip",
-    "sha256": "d734c42fd993c667af50724868096884f941b751855669db6298e6107d4a5520"
+    "path": "artifacts/candidates/stateful-gpt-legal-v1.zip",
+    "sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624"
   }
 }

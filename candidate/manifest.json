@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "candidate": "stateful-gpt-legal-v1",
+  "source_commit": "SOT-2132:a83f243",
+  "entrypoint": "python -I -m arcagi3_baseline.candidate_entrypoint",
+  "runtime": {
+    "python": ">=3.11",
+    "external_dependencies": []
+  },
+  "source_files": {
+    "arcagi3_baseline/__init__.py": "d937ea33f6c055aca7bd5ee89bfecb99d7f5ec8d2380fbda7a208289b95fe8a3",
+    "arcagi3_baseline/agent.py": "44e11eda00b551e67dceabc214bccc0430eb4e4f919b3b234c30809ca50802e1",
+    "arcagi3_baseline/candidate_entrypoint.py": "7bed6abe6b5754e81386f27b5e20389d5753276d4820fb5c184dddc7478cb1fc",
+    "arcagi3_baseline/contract.py": "0379100807cb0e8c5a4fbef6ad26af063a60ef2e70f3f6a5cfd526046ca2008d"
+  },
+  "artifact": {
+    "path": "artifacts/candidates/stateful-gpt-legal-v1.zip",
+    "sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624"
+  }
+}

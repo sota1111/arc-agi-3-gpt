@@ -1,21 +1,23 @@
 # GPT champion provenance
 
 The canonical machine-readable record is
-[`champion/manifest.json`](../champion/manifest.json). It pins:
+[`champion/manifest.json`](../champion/manifest.json). The repository champion
+is `stateful-gpt-legal-v1`. Its manifest pins the candidate sources, reproducible
+ZIP, screen and independent confirm results, and offline Kaggle-shaped exec gate
+by SHA-256.
 
-- production policy `deterministic-legal-v1`;
-- introduction commit `7a145f8d68a93c09a51c69a2bce96388f7cba632`;
-- every packaged source, screen/confirm manifest, and result by SHA-256;
-- Kaggle kernel `sota1111/arc-agi-3-gpt-registered-champion` version 5;
-- completed submission `55067146` and public score `0.08`;
-- the explicit non-promotion decision for `stateful-gpt-legal-v1`.
+Run these commands to reconstruct and verify the decision:
 
-Run `python3 scripts/build_champion_artifact.py --check` to reconstruct
-`artifacts/champion/deterministic-legal-v1.zip` byte-for-byte and verify all
-inputs. The archive contains only the Kaggle script and metadata, uses fixed
-timestamps and permissions, and needs no network access to build.
+```bash
+python3 scripts/build_candidate_artifact.py --check
+python3 -m arcagi3_baseline.compare --manifest eval/manifests/agent-screen.json
+python3 -m arcagi3_baseline.compare --manifest eval/manifests/agent-confirm.json
+python3 -m arcagi3_baseline.exec_gate --manifest eval/manifests/exec-gate.json
+python3 scripts/build_champion_artifact.py --check
+```
 
-The entrypoint gate parses and compiles both `submit.py` and its embedded agent
-source through Python's `exec`-compatible compiler. The real Kaggle kernel
-completed and produced `submission.parquet`; competition submission `55067146`
-then completed with public score `0.08`.
+The latest registered Kaggle kernel and completed submission still used
+`deterministic-legal-v1` (kernel version 5, submission `55067146`, public score
+`0.08`). That historical production state is recorded separately from the
+promoted repository champion. The next issue must run the stateful artifact in
+the real Kaggle kernel/submission environment before updating those fields.
