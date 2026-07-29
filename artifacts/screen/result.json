@@ -1,0 +1,34 @@
+{
+  "candidate": "deterministic-legal-v1",
+  "champion": "deterministic-legal-v1",
+  "fixture_sha256": "626abefb0f8e38be8e858dec05cc1f80a42d39b9a32448b965d9346349e35127",
+  "manifest": "eval/manifests/screen.json",
+  "manifest_sha256": "d10236e316ab4bee4962925206c4ed43cb24950e560504dc21197929e5a5f3ca",
+  "pass_rate": 1.0,
+  "passed_runs": 3,
+  "phase": "screen",
+  "promoted": true,
+  "repetitions": 3,
+  "runs": [
+    {
+      "duration_seconds": 0.019374,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 1
+    },
+    {
+      "duration_seconds": 0.019788,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 2
+    },
+    {
+      "duration_seconds": 0.021148,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 3
+    }
+  ],
+  "schema_version": 1,
+  "threshold": 1.0
+}

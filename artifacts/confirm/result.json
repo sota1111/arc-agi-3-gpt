@@ -1,0 +1,76 @@
+{
+  "candidate": "deterministic-legal-v1",
+  "champion": "deterministic-legal-v1",
+  "fixture_sha256": "626abefb0f8e38be8e858dec05cc1f80a42d39b9a32448b965d9346349e35127",
+  "manifest": "eval/manifests/confirm.json",
+  "manifest_sha256": "9e16dd2560e7dbbb60f351fe0e7450c6efe0a8144108a1f10ddaa528dbf7d0bc",
+  "pass_rate": 1.0,
+  "passed_runs": 10,
+  "phase": "confirm",
+  "promoted": true,
+  "repetitions": 10,
+  "runs": [
+    {
+      "duration_seconds": 0.021811,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 1
+    },
+    {
+      "duration_seconds": 0.019502,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 2
+    },
+    {
+      "duration_seconds": 0.021348,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 3
+    },
+    {
+      "duration_seconds": 0.022239,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 4
+    },
+    {
+      "duration_seconds": 0.023965,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 5
+    },
+    {
+      "duration_seconds": 0.020144,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 6
+    },
+    {
+      "duration_seconds": 0.022104,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 7
+    },
+    {
+      "duration_seconds": 0.019853,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 8
+    },
+    {
+      "duration_seconds": 0.020552,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 9
+    },
+    {
+      "duration_seconds": 0.019199,
+      "errors": [],
+      "exit_code": 0,
+      "repetition": 10
+    }
+  ],
+  "schema_version": 1,
+  "threshold": 1.0
+}
