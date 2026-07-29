@@ -19,12 +19,14 @@ non-deterministic output are rejected by the entrypoint or evaluation harness.
 | --- | --- | --- |
 | Screen | `eval/manifests/screen.json` | 3/3 passed, pass rate 1.0 |
 | Confirm | `eval/manifests/confirm.json` | 10/10 passed, pass rate 1.0 |
-| Unit | `python3 -m pytest -q` | 5 passed |
+| Unit | `python3 -m pytest -q` | 6 passed |
 | Lint | `uvx ruff check .` | passed |
 | Type check | `uvx --with pytest pyright arcagi3_baseline main.py tests` | passed |
 | Clean runtime | `uv run --isolated --no-project python main.py --input tests/fixtures/replay.jsonl` | passed |
 | Kaggle kernel | registered champion, version 5 | COMPLETE; output schema inspected |
+| Kaggle competition rerun | submission `55067146` | COMPLETE; public score 0.08 |
 
-The local and kernel gates promote the initial baseline because there is no
-prior behavior to replace. Future candidates that fail screen or confirm must
-be reverted while this champion and their rejection artifact remain recorded.
+The local, kernel, and competition rerun gates promote the initial baseline
+because there is no prior behavior to replace. Future candidates that fail
+screen or confirm must be reverted while this champion and their rejection
+artifact remain recorded.
