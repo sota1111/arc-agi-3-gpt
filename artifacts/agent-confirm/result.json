@@ -1,0 +1,38 @@
+{
+  "candidates": [
+    {
+      "candidate": "deterministic-legal-v1",
+      "completion_rate": 0.0,
+      "estimated_cost_usd": 0.0,
+      "fallback_count": 0,
+      "legal_action_rate": 1.0,
+      "progress_proxy": 0.25000000000000033,
+      "runtime_seconds": 0.000652
+    },
+    {
+      "candidate": "stateful-gpt-legal-v1",
+      "completion_rate": 0.3333333333333333,
+      "estimated_cost_usd": 0.0,
+      "fallback_count": 60,
+      "legal_action_rate": 1.0,
+      "progress_proxy": 0.433333333333333,
+      "runtime_seconds": 0.003499
+    }
+  ],
+  "champion": "deterministic-legal-v1",
+  "fixture_sha256": "51388a66dcee0abc8b4e182cc3623314ccc74ab5f3f242d1ed50c546204ef410",
+  "kaggle_exec_verified": false,
+  "manifest": "eval/manifests/agent-confirm.json",
+  "manifest_sha256": "a1c59dbe59eb0429c2c55caf1d014e95072a44ab1b5fc7c48e2df6fedb3f2c88",
+  "phase": "confirm",
+  "promoted": false,
+  "promotion_reason": "candidate behavior is not promoted until every gate is verified",
+  "repetitions": 20,
+  "schema_version": 1,
+  "seed": 2132,
+  "thresholds": {
+    "legal_action_rate": 1.0,
+    "min_progress_improvement": 0.1
+  },
+  "winner": "stateful-gpt-legal-v1"
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "phase": "screen",
+  "seed": 2132,
+  "repetitions": 3,
+  "champion": "deterministic-legal-v1",
+  "candidates": [
+    "deterministic-legal-v1",
+    "gpt-no-memory-v1",
+    "gpt-no-constraints-v1",
+    "stateful-gpt-legal-v1"
+  ],
+  "fixture": {
+    "path": "tests/fixtures/agent_replay.jsonl",
+    "sha256": "51388a66dcee0abc8b4e182cc3623314ccc74ab5f3f242d1ed50c546204ef410"
+  },
+  "thresholds": {
+    "legal_action_rate": 1.0,
+    "min_progress_improvement": 0.1
+  },
+  "kaggle_exec_verified": false,
+  "artifact": "artifacts/agent-screen/result.json"
+}

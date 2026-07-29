@@ -12,6 +12,8 @@ Python 3.11 or newer is the only runtime dependency.
 python3 main.py --input tests/fixtures/replay.jsonl
 python3 -m arcagi3_baseline.evaluate --manifest eval/manifests/screen.json
 python3 -m arcagi3_baseline.evaluate --manifest eval/manifests/confirm.json
+python3 -m arcagi3_baseline.compare --manifest eval/manifests/agent-screen.json
+python3 -m arcagi3_baseline.compare --manifest eval/manifests/agent-confirm.json
 ```
 
 `main.py` accepts one JSON observation per line and emits exactly one JSON
@@ -31,6 +33,21 @@ The current baseline and champion are both `deterministic-legal-v1`:
 This policy is intentionally weak but deterministic and contract-safe. Agent
 candidates in later issues must be compared with this champion using the same
 screen and confirm manifests.
+
+## Stateful GPT candidate
+
+`StatefulGPTAgent` normalizes each observation into a bounded history of frame
+digests, changed fields, and prior action ids. It requests a single official
+action-schema object, validates it against the current advertised legal actions,
+retries malformed/empty/timeout responses, then falls back to
+`deterministic-legal-v1`. The fallback is local and deterministic, so model
+failure cannot terminate a game or emit an illegal action.
+
+The SOT-2132 replay compares the baseline, no-memory, no-constraint, and full
+stateful/constraint variants with seed `2132`. The fixture model is deliberately
+offline and costs zero; it exercises the decision boundary without credentials.
+The candidate remains separate from `main.py` and the Kaggle embedded champion
+until a real competition rerun verifies it.
 
 ## Evaluation and promotion
 

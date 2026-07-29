@@ -1,0 +1,56 @@
+{
+  "candidates": [
+    {
+      "candidate": "deterministic-legal-v1",
+      "completion_rate": 0.0,
+      "estimated_cost_usd": 0.0,
+      "fallback_count": 0,
+      "legal_action_rate": 1.0,
+      "progress_proxy": 0.24999999999999994,
+      "runtime_seconds": 0.000118
+    },
+    {
+      "candidate": "gpt-no-memory-v1",
+      "completion_rate": 0.16666666666666666,
+      "estimated_cost_usd": 0.0,
+      "fallback_count": 9,
+      "legal_action_rate": 1.0,
+      "progress_proxy": 0.3,
+      "runtime_seconds": 0.000493
+    },
+    {
+      "candidate": "gpt-no-constraints-v1",
+      "completion_rate": 0.0,
+      "estimated_cost_usd": 0.0,
+      "fallback_count": 18,
+      "legal_action_rate": 1.0,
+      "progress_proxy": 0.24999999999999994,
+      "runtime_seconds": 0.000454
+    },
+    {
+      "candidate": "stateful-gpt-legal-v1",
+      "completion_rate": 0.3333333333333333,
+      "estimated_cost_usd": 0.0,
+      "fallback_count": 9,
+      "legal_action_rate": 1.0,
+      "progress_proxy": 0.43333333333333335,
+      "runtime_seconds": 0.000537
+    }
+  ],
+  "champion": "deterministic-legal-v1",
+  "fixture_sha256": "51388a66dcee0abc8b4e182cc3623314ccc74ab5f3f242d1ed50c546204ef410",
+  "kaggle_exec_verified": false,
+  "manifest": "eval/manifests/agent-screen.json",
+  "manifest_sha256": "b2dd0116609c17c001d6592114fe934dcd32277791c50adc466ac51604b47d4f",
+  "phase": "screen",
+  "promoted": true,
+  "promotion_reason": "candidate clears every gate required for this phase",
+  "repetitions": 3,
+  "schema_version": 1,
+  "seed": 2132,
+  "thresholds": {
+    "legal_action_rate": 1.0,
+    "min_progress_improvement": 0.1
+  },
+  "winner": "stateful-gpt-legal-v1"
+}
