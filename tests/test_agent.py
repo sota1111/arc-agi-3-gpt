@@ -66,8 +66,8 @@ def test_parser_accepts_json_fence_and_rejects_prose() -> None:
 
 def test_screen_winner_is_not_promoted_without_confirm_exec_gate() -> None:
     root = Path(__file__).resolve().parents[1]
-    screen = evaluate(root / "eval/manifests/agent-screen.json")
-    confirm = evaluate(root / "eval/manifests/agent-confirm.json")
+    screen = evaluate(root / "eval/manifests/agent-screen.json", write_artifact=False)
+    confirm = evaluate(root / "eval/manifests/agent-confirm.json", write_artifact=False)
     assert screen["winner"] == confirm["winner"] == "stateful-gpt-legal-v1"
     assert screen["seed"] == confirm["seed"] == 2132
     assert screen["fixture_sha256"] == confirm["fixture_sha256"]

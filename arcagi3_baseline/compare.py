@@ -61,7 +61,7 @@ def _candidate_actions(
     return actions, fallback_count
 
 
-def evaluate(manifest_path: Path) -> dict[str, Any]:
+def evaluate(manifest_path: Path, *, write_artifact: bool = True) -> dict[str, Any]:
     root = Path(__file__).resolve().parents[1]
     manifest = json.loads(manifest_path.read_text())
     fixture = root / manifest["fixture"]["path"]
@@ -135,9 +135,10 @@ def evaluate(manifest_path: Path) -> dict[str, Any]:
             else "candidate behavior is not promoted until every gate is verified"
         ),
     }
-    output_path = root / manifest["artifact"]
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+    if write_artifact:
+        output_path = root / manifest["artifact"]
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
     return result
 
 
