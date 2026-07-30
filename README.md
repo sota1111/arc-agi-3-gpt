@@ -53,9 +53,27 @@ SOT-2184 freezes the candidate as
 dependencies and exposes a JSON-lines stdin/stdout entrypoint. Its isolated
 exec gate verifies the artifact hash, imports, action schema, fallback behavior,
 and an enforced process timeout. The candidate passed screen and independent
-confirm without reducing completion and improved the progress proxy, so it is
-the repository champion. The previously registered Kaggle kernel remains
+confirm without reducing completion and improved the progress proxy, so it
+became the SOT-2184 champion and the baseline for SOT-2185. The previously
+registered Kaggle kernel remains
 `deterministic-legal-v1` until the follow-up real Kaggle proof.
+
+## Connected-region exploration champion
+
+SOT-2185 adds four-neighbour connected components for frame changes and a
+bounded per-action/coordinate effect history. The policy targets action 6 at
+the largest changed-region centre, then prioritizes unexplored action keys and
+keys with prior effects. The tracker retains at most eight observations,
+actions, and outcomes per key.
+
+The screen cohort compares the SOT-2184 champion, region-only, effect-only, and
+full variants. Only its winning full variant proceeds to a distinct confirm
+cohort. `region-effect-full-v1` improved confirm progress proxy from 0.02 to
+0.48, completion from 0.0 to 0.2, unique effective actions from 1 to 3, and
+no-op rate from 0.8 to 0.2, with zero faults and no p95 regression. Its
+dependency-free exec artifact passed hash, import, stdin/stdout, schema,
+fallback, and hard-timeout checks, so it is the repository champion passed to
+SOT-2186 for real Kaggle proof.
 
 ## Evaluation and promotion
 

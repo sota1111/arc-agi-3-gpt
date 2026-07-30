@@ -58,6 +58,33 @@ def test_tracker_keeps_deltas_and_bounded_action_history() -> None:
     assert tracker.prompt_state()["recent_actions"] == [5, 2]
 
 
+def test_tracker_extracts_connected_regions_and_bounded_effect_history() -> None:
+    tracker = StateTracker(max_events=2)
+    first = observation([6])
+    first["frame"] = [[0, 0], [0, 0]]
+    tracker.observe(first)
+    tracker.record({"id": 6, "data": {"game_id": "g", "x": 1, "y": 1}})
+    changed = observation([6])
+    changed["frame"] = [[1, 0], [1, 0]]
+    tracker.observe(changed)
+    assert tracker.regions == [{"x_min": 0, "y_min": 0, "x_max": 0, "y_max": 1, "area": 2}]
+    assert tracker.effect_history == {"6:0:0": [1]}
+
+
+def test_full_exploration_targets_largest_changed_region() -> None:
+    agent = StatefulGPTAgent(lambda prompt: None, use_regions=True, use_effect_history=True)
+    first = observation([6])
+    first["frame"] = [[0, 0], [0, 0]]
+    agent.choose(first)
+    changed = observation([6])
+    changed["frame"] = [[0, 1], [0, 1]]
+    action = agent.choose(changed)
+    assert action["id"] == 6
+    assert action["data"]["x"] == 1
+    assert action["data"]["y"] == 0
+    assert action["reasoning"]["fallback"] == "region-effect-policy"
+
+
 def test_parser_accepts_json_fence_and_rejects_prose() -> None:
     assert parse_model_action('```json\n{"id":2,"data":{"game_id":"g"}}\n```')["id"] == 2
     with pytest.raises(ContractError):
@@ -75,3 +102,23 @@ def test_screen_winner_is_promoted_after_confirm_exec_gate() -> None:
     assert confirm["promoted"] is True
     assert confirm["kaggle_exec_verified"] is True
     assert confirm["candidate_artifact_sha256"] == screen["candidate_artifact_sha256"]
+
+
+def test_region_ablation_uses_independent_confirm_cohort() -> None:
+    from arcagi3_baseline.exploration_compare import evaluate as evaluate_exploration
+
+    root = Path(__file__).resolve().parents[1]
+    screen = evaluate_exploration(
+        root / "eval/manifests/region-screen.json", write_artifact=False
+    )
+    confirm = evaluate_exploration(
+        root / "eval/manifests/region-confirm.json", write_artifact=False
+    )
+    assert screen["selected_for_confirm"] == "region-effect-full-v1"
+    assert [item["candidate"] for item in confirm["candidates"]] == [
+        "stateful-gpt-legal-v1",
+        screen["selected_for_confirm"],
+    ]
+    assert screen["cohort"] != confirm["cohort"]
+    assert screen["fixture"]["sha256"] != confirm["fixture"]["sha256"]
+    assert confirm["promoted"] is True

@@ -27,7 +27,7 @@ class RecordModel:
 
 def run(source: TextIO, destination: TextIO) -> int:
     model = RecordModel()
-    agent = StatefulGPTAgent(model)
+    agent = StatefulGPTAgent(model, use_regions=True, use_effect_history=True)
     for line_number, line in enumerate(source, 1):
         if not line.strip():
             continue
