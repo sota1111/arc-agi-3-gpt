@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "issue": "SOT-2186",
+  "champion": "region-effect-full-v1",
+  "source_commit": "e6bba1d461c03856429e0ae19f8116ec3306149b",
+  "candidate_artifact": {
+    "path": "artifacts/candidates/region-effect-full-v1.zip",
+    "sha256": "c667ea758bf72eab13086ed9f1c29c22b5eb9306b9a0830568cbd5f2995ee0c1"
+  },
+  "gates": {
+    "screen_result": "artifacts/region-screen/result.json",
+    "confirm_result": "artifacts/region-confirm/result.json",
+    "exec_result": "artifacts/exec-gate/result.json",
+    "exec_passed": true
+  },
+  "kaggle": {
+    "competition": "arc-prize-2026-arc-agi-3",
+    "kernel_ref": "sota1111/arc-agi-3-gpt-registered-champion",
+    "kernel_version": 6,
+    "kernel_status": "COMPLETE",
+    "output": "submission.parquet",
+    "output_size_bytes": 2648,
+    "output_magic": "PAR1",
+    "submission_ref": 55095979,
+    "submission_status": "COMPLETE",
+    "public_score": 0.0,
+    "submitted_at_utc": "2026-07-30T01:23:09.300Z"
+  },
+  "conclusion": "Kaggle proof completed. The 0.00 public score trails the prior deterministic-legal-v1 score of 0.08; preserve both measurements for the next promotion decision."
+}

@@ -1,4 +1,4 @@
-"""Kaggle entrypoint for the deterministic ARC-AGI-3 baseline."""
+"""Kaggle entrypoint for the cycle-5 region/effect GPT champion."""
 
 import os
 import shutil
@@ -6,12 +6,55 @@ import subprocess
 from pathlib import Path
 
 AGENT_SOURCE = r'''
+from collections import defaultdict
 from typing import Any
 from arcengine import FrameData, GameAction, GameState
 from ..agent import Agent
 
-class DeterministicLegal(Agent):
+def flatten_layers(layers):
+    height = max((len(layer) for layer in layers), default=0)
+    width = max((len(row) for layer in layers for row in layer), default=0)
+    frame = [[0 for _ in range(width)] for _ in range(height)]
+    for layer in layers:
+        for y, row in enumerate(layer):
+            for x, value in enumerate(row):
+                if value != 0:
+                    frame[y][x] = value
+    return frame
+
+def largest_changed_region(previous, current):
+    changed = set()
+    for y in range(max(len(previous), len(current))):
+        before = previous[y] if y < len(previous) else []
+        after = current[y] if y < len(current) else []
+        for x in range(max(len(before), len(after))):
+            old = before[x] if x < len(before) else None
+            new = after[x] if x < len(after) else None
+            if old != new:
+                changed.add((x, y))
+    regions = []
+    while changed:
+        seed = changed.pop()
+        component = {seed}
+        frontier = [seed]
+        while frontier:
+            x, y = frontier.pop()
+            for neighbour in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+                if neighbour in changed:
+                    changed.remove(neighbour)
+                    component.add(neighbour)
+                    frontier.append(neighbour)
+        regions.append(component)
+    return max(regions, key=lambda region: (len(region), -min(region)), default=set())
+
+class RegionEffectChampion(Agent):
     MAX_ACTIONS = 80
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.previous_frame = []
+        self.pending_key = None
+        self.effect_history = defaultdict(list)
 
     def is_done(self, frames: list[FrameData], latest_frame: FrameData) -> bool:
         return latest_frame.state is GameState.WIN
@@ -20,16 +63,45 @@ class DeterministicLegal(Agent):
         self, frames: list[FrameData], latest_frame: FrameData
     ) -> GameAction:
         if latest_frame.state in (GameState.NOT_PLAYED, GameState.GAME_OVER):
-            action_id = 0
+            self.previous_frame = []
+            self.pending_key = None
+            self.effect_history.clear()
+            action = GameAction.RESET
         else:
-            available = sorted(set(latest_frame.available_actions))
-            action_id = next((value for value in available if value != 0), 0)
-        action = GameAction.from_id(action_id)
-        data: dict[str, Any] = {"game_id": self.game_id}
-        if action_id == 6:
-            data.update(x=0, y=0)
-        action.set_data(data)
-        action.reasoning = {"policy": "deterministic-legal-v1"}
+            current = flatten_layers(latest_frame.frame)
+            region = largest_changed_region(self.previous_frame, current)
+            if self.pending_key is not None:
+                history = self.effect_history[self.pending_key]
+                history.append(int(bool(region)))
+                del history[:-8]
+            available = sorted(
+                {int(getattr(value, "value", value)) for value in latest_frame.available_actions}
+                - {0}
+            )
+            if not available:
+                action = GameAction.RESET
+                self.pending_key = None
+            elif 6 in available and region:
+                xs = [point[0] for point in region]
+                ys = [point[1] for point in region]
+                x = min(63, (min(xs) + max(xs)) // 2)
+                y = min(63, (min(ys) + max(ys)) // 2)
+                action = GameAction.from_id(6)
+                action.set_data({"x": x, "y": y})
+                self.pending_key = f"6:{x // 8}:{y // 8}"
+            else:
+                def score(action_id):
+                    history = self.effect_history[str(action_id)]
+                    novelty = 1.0 if not history else 0.0
+                    effect_rate = sum(history) / len(history) if history else 0.5
+                    return (novelty + effect_rate, -action_id)
+                action_id = max(available, key=score)
+                action = GameAction.from_id(action_id)
+                if action_id == 6:
+                    action.set_data({"x": 0, "y": 0})
+                self.pending_key = str(action_id)
+            self.previous_frame = current
+        action.reasoning = {"policy": "region-effect-full-v1"}
         return action
 '''
 
@@ -71,17 +143,17 @@ if os.getenv("KAGGLE_IS_COMPETITION_RERUN"):
     source = competition / "ARC-AGI-3-Agents"
     work = Path("/kaggle/working/ARC-AGI-3-Agents")
     shutil.copytree(source, work, dirs_exist_ok=True)
-    (work / "agents" / "templates" / "deterministic_legal.py").write_text(AGENT_SOURCE)
+    (work / "agents" / "templates" / "region_effect.py").write_text(AGENT_SOURCE)
     (work / "agents" / "__init__.py").write_text(
         """from typing import Type
 from dotenv import load_dotenv
 from .agent import Agent, Playback
 from .swarm import Swarm
-from .templates.deterministic_legal import DeterministicLegal
+from .templates.region_effect import RegionEffectChampion
 
 load_dotenv()
 AVAILABLE_AGENTS: dict[str, Type[Agent]] = {
-    "deterministic-legal": DeterministicLegal,
+    "region-effect": RegionEffectChampion,
 }
 """
     )
@@ -96,7 +168,7 @@ AVAILABLE_AGENTS: dict[str, Type[Agent]] = {
         "RECORDINGS_DIR=/kaggle/working/server_recording\n"
     )
     subprocess.run(
-        ["python", "main.py", "--agent", "deterministic-legal"],
+        ["python", "main.py", "--agent", "region-effect"],
         cwd=work,
         check=True,
         timeout=10800,
