@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "candidate": "stateful-gpt-legal-v1",
+  "candidate": "region-effect-full-v1",
   "candidate_artifact": {
-    "path": "artifacts/candidates/stateful-gpt-legal-v1.zip",
-    "sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624"
+    "path": "artifacts/candidates/region-effect-full-v1.zip",
+    "sha256": "c667ea758bf72eab13086ed9f1c29c22b5eb9306b9a0830568cbd5f2995ee0c1"
   },
   "fixture": {
     "path": "tests/fixtures/agent_replay.jsonl",

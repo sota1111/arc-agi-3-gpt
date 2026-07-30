@@ -1,13 +1,13 @@
 {
-  "artifact": "artifacts/candidates/stateful-gpt-legal-v1.zip",
+  "artifact": "artifacts/candidates/region-effect-full-v1.zip",
   "artifact_members": [
     "arcagi3_baseline/__init__.py",
     "arcagi3_baseline/agent.py",
     "arcagi3_baseline/candidate_entrypoint.py",
     "arcagi3_baseline/contract.py"
   ],
-  "artifact_sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624",
-  "candidate": "stateful-gpt-legal-v1",
+  "artifact_sha256": "c667ea758bf72eab13086ed9f1c29c22b5eb9306b9a0830568cbd5f2995ee0c1",
+  "candidate": "region-effect-full-v1",
   "checks": {
     "action_schema": true,
     "artifact_hash": true,
@@ -31,7 +31,7 @@
     "timeout_probe_seconds": 0.05
   },
   "manifest": "eval/manifests/exec-gate.json",
-  "manifest_sha256": "5b4d0064555fb0c3a8307c55dc9cb2b4e8c7851f146bd55723b4ddc41408eddd",
+  "manifest_sha256": "57b05ef1f47262510988fe4748e2c570efbaea4426b84bae3ae297276c283000",
   "passed": true,
   "records": 6,
   "schema_version": 1

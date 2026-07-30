@@ -1,28 +1,28 @@
 {
   "schema_version": 2,
-  "champion": "stateful-gpt-legal-v1",
+  "champion": "region-effect-full-v1",
   "competition": "arc-prize-2026-arc-agi-3",
-  "source_commit": "SOT-2132:a83f243",
+  "source_commit": "SOT-2185",
   "candidate_manifest": "candidate/manifest.json",
-  "candidate_manifest_sha256": "f464ac8cd8d25b988913aa63bab4f0cae76366c12bc65dd01d40d3c4d19bfe47",
+  "candidate_manifest_sha256": "d52f768c6b01230f8e7ecd9104f2f6aceeca2672473a94f9be22091761081380",
   "evaluation": {
-    "screen_manifest": "eval/manifests/agent-screen.json",
-    "screen_manifest_sha256": "c4736c281933dcbda36b9d885cb92d3f1c86218274c09047670f3e4e2b10cf5a",
-    "screen_result": "artifacts/agent-screen/result.json",
-    "screen_result_sha256": "3c382237954dbf98149dee79ab76ee0ec7c3018af5a939603a46cfa9a0183307",
-    "confirm_manifest": "eval/manifests/agent-confirm.json",
-    "confirm_manifest_sha256": "d2fdef02fe1b460fd8537b14304a23c0fb1c793a7d88aa343675bb6e902eeabc",
-    "confirm_result": "artifacts/agent-confirm/result.json",
-    "confirm_result_sha256": "f8625e9d61806891a5781c960b067fee28fd79d9ea61c2af9aed025d439ac9f5",
+    "screen_manifest": "eval/manifests/region-screen.json",
+    "screen_manifest_sha256": "d95a421427c7ed3ceb69a6d823bdfd8ae1c98c5375011fa01cf8b8a5f23a2066",
+    "screen_result": "artifacts/region-screen/result.json",
+    "screen_result_sha256": "2f5972b78bb386e8cf3d5d1818c8fa41c666df3013191c637af818fcfac9d402",
+    "confirm_manifest": "eval/manifests/region-confirm.json",
+    "confirm_manifest_sha256": "1a70bb11006cd3b749b5e343b00e497dccba504a8f01e28bf57767f0dc9626ee",
+    "confirm_result": "artifacts/region-confirm/result.json",
+    "confirm_result_sha256": "f8f95eb35b88e8de53562f884c2101c16c4d4bd8cf02dca51d17edb56e7c2e01",
     "exec_manifest": "eval/manifests/exec-gate.json",
-    "exec_manifest_sha256": "5b4d0064555fb0c3a8307c55dc9cb2b4e8c7851f146bd55723b4ddc41408eddd",
+    "exec_manifest_sha256": "57b05ef1f47262510988fe4748e2c570efbaea4426b84bae3ae297276c283000",
     "exec_result": "artifacts/exec-gate/result.json",
-    "exec_result_sha256": "9b9f2268d4c44d4018b30b02ab808dd1286bfacfbec9b94c90f8c280bd402f84"
+    "exec_result_sha256": "7e628aed491a126242d7c98e7d2ffbef84e8c1bd2434d53b2a5035621f4b6e11"
   },
   "candidate_decision": {
-    "candidate": "stateful-gpt-legal-v1",
+    "candidate": "region-effect-full-v1",
     "promoted": true,
-    "reason": "screen and independent confirm improve progress without reducing completion; offline Kaggle exec gate passed"
+    "reason": "screen ablation winner improved again on an independent confirm cohort without completion, fault, or p95 regression; offline Kaggle exec gate passed"
   },
   "registered_kaggle_submission": {
     "champion": "deterministic-legal-v1",
@@ -33,9 +33,9 @@
     "public_score": 0.08,
     "submitted_at_utc": "2026-07-29T00:00:19.957Z"
   },
-  "next_gate": "Kaggle kernel execution and submission proof for stateful-gpt-legal-v1",
+  "next_gate": "Kaggle kernel execution and submission proof for region-effect-full-v1 (SOT-2186)",
   "artifact": {
-    "path": "artifacts/candidates/stateful-gpt-legal-v1.zip",
-    "sha256": "8bde2b3416beb1ab021540df667a47907f9c6802c0f5c0aeb01ba68dcca3a624"
+    "path": "artifacts/candidates/region-effect-full-v1.zip",
+    "sha256": "c667ea758bf72eab13086ed9f1c29c22b5eb9306b9a0830568cbd5f2995ee0c1"
   }
 }

@@ -25,7 +25,8 @@ def verify_file(path: str, expected: str) -> None:
 
 def build() -> tuple[Path, str]:
     manifest = json.loads(MANIFEST.read_text())
-    if manifest["champion"] == "stateful-gpt-legal-v1":
+    candidate = json.loads((ROOT / manifest["candidate_manifest"]).read_text())
+    if manifest["champion"] == candidate["candidate"]:
         try:
             from scripts.build_candidate_artifact import build as build_candidate
         except ModuleNotFoundError:

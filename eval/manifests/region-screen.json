@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "phase": "screen",
+  "cohort": "region-screen-v1",
+  "repetitions": 3,
+  "champion": "stateful-gpt-legal-v1",
+  "candidates": [
+    "stateful-gpt-legal-v1",
+    "region-only-v1",
+    "effect-history-only-v1",
+    "region-effect-full-v1"
+  ],
+  "fixture": {
+    "path": "tests/fixtures/region_screen.jsonl",
+    "sha256": "574f84f9071aa16ef1744c9134b8cecf21a5e904bb13cb4d67dab4d06da8b520"
+  },
+  "thresholds": {
+    "legal_action_rate": 1.0,
+    "min_progress_improvement": 0.2,
+    "max_p95_action_seconds": 0.05
+  },
+  "artifact": "artifacts/region-screen/result.json"
+}

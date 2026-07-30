@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "phase": "confirm",
+  "cohort": "region-confirm-v1",
+  "repetitions": 20,
+  "champion": "stateful-gpt-legal-v1",
+  "candidates": [
+    "stateful-gpt-legal-v1",
+    "region-effect-full-v1"
+  ],
+  "fixture": {
+    "path": "tests/fixtures/region_confirm.jsonl",
+    "sha256": "65bc54aab376c639e305ec48855e4f8fd2c40b0ae1679a9d3e60289df77d8dd4"
+  },
+  "thresholds": {
+    "legal_action_rate": 1.0,
+    "min_progress_improvement": 0.2,
+    "max_p95_action_seconds": 0.05
+  },
+  "kaggle_exec_verified": true,
+  "artifact": "artifacts/region-confirm/result.json"
+}
