@@ -45,6 +45,14 @@ retries malformed/empty/timeout responses, then falls back to
 `deterministic-legal-v1`. The fallback is local and deterministic, so model
 failure cannot terminate a game or emit an illegal action.
 
+For live model calls, `ResponsesRuntime` adapts an OpenAI client to this agent
+contract. It chains each successful `response.id` through
+`previous_response_id`, resends fixed `instructions` on every turn, and can
+opt into retained reasoning (`reasoning.context="all_turns"`) plus server-side
+compaction (`context_management` with a positive `compact_threshold`). Because
+the server owns the conversation chain, the agent does not also send its
+bounded rolling memory. A changed `game_id` resets the response chain.
+
 The SOT-2132 replay compares the baseline, no-memory, no-constraint, and full
 stateful/constraint variants with seed `2132`. The fixture model is deliberately
 offline and costs zero; it exercises the decision boundary without credentials.
