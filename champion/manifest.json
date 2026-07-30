@@ -2,7 +2,7 @@
   "schema_version": 2,
   "champion": "region-effect-full-v1",
   "competition": "arc-prize-2026-arc-agi-3",
-  "source_commit": "SOT-2185",
+  "source_commit": "e6bba1d461c03856429e0ae19f8116ec3306149b",
   "candidate_manifest": "candidate/manifest.json",
   "candidate_manifest_sha256": "d52f768c6b01230f8e7ecd9104f2f6aceeca2672473a94f9be22091761081380",
   "evaluation": {
@@ -25,15 +25,15 @@
     "reason": "screen ablation winner improved again on an independent confirm cohort without completion, fault, or p95 regression; offline Kaggle exec gate passed"
   },
   "registered_kaggle_submission": {
-    "champion": "deterministic-legal-v1",
+    "champion": "region-effect-full-v1",
     "kernel_ref": "sota1111/arc-agi-3-gpt-registered-champion",
-    "kernel_version": 5,
-    "submission_ref": 55067146,
+    "kernel_version": 6,
+    "submission_ref": 55095979,
     "status": "COMPLETE",
-    "public_score": 0.08,
-    "submitted_at_utc": "2026-07-29T00:00:19.957Z"
+    "public_score": 0.0,
+    "submitted_at_utc": "2026-07-30T01:23:09.300Z"
   },
-  "next_gate": "Kaggle kernel execution and submission proof for region-effect-full-v1 (SOT-2186)",
+  "next_gate": "Reconcile the 0.00 production score against the prior 0.08 champion in the next promotion cycle",
   "artifact": {
     "path": "artifacts/candidates/region-effect-full-v1.zip",
     "sha256": "c667ea758bf72eab13086ed9f1c29c22b5eb9306b9a0830568cbd5f2995ee0c1"

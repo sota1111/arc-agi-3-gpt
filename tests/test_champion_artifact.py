@@ -29,7 +29,9 @@ def test_kaggle_entrypoint_and_embedded_agent_are_exec_compatible() -> None:
         )
     )
     embedded = ast.literal_eval(assignment.value)
-    compile(embedded, "deterministic_legal.py", "exec")
+    compile(embedded, "region_effect.py", "exec")
+    assert "class RegionEffectChampion" in embedded
+    assert '"policy": "region-effect-full-v1"' in embedded
 
 
 def test_all_provenance_hashes_match() -> None:

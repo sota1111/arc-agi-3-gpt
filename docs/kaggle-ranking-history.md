@@ -9,6 +9,7 @@
 | 2026-07-26 13:38 | 1,782 | 1,922 | ERROR (unscored) |
 | 2026-07-28 15:57 | 1,418 | 1,949 | ERROR (no completed GPT score) |
 | 2026-07-29 01:24 | 1,420 | 1,953 | **0.08 COMPLETE** (`55067146`) |
+| 2026-07-30 01:23 | pending | pending | **0.00 COMPLETE** (`55095979`, `region-effect-full-v1`) |
 
 The official rank is shared by the GPT and Claude repositories because both
 submit under the same Kaggle team. Submission `55067146`, produced by kernel
@@ -23,4 +24,12 @@ because the competition's configured daily cap of one had already been consumed
 by `55067146`. Resume after the next daily reset by pushing a newly verified
 kernel version and submitting its generated `submission.parquet`.
 
-Source: Kaggle CLI `competitions list` and `competitions submissions`. Earlier official-rank snapshots were not retained, so they are not reconstructed or estimated.
+Kernel version 6 and submission `55095979` completed. The candidate improved
+the fixed local progress proxy but scored `0.00`, below the prior GPT
+submission's `0.08`; the next cycle must use this production mismatch when
+deciding whether to retain or replace the repository champion. The daily
+allowance is exhausted, so no duplicate submission was attempted.
+
+Source: Kaggle CLI `competitions list`, `kernels status`, and `competitions
+submissions`. Earlier official-rank snapshots were not retained, so they are
+not reconstructed or estimated.

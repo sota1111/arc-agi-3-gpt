@@ -2,7 +2,7 @@
 
 The canonical machine-readable record is
 [`champion/manifest.json`](../champion/manifest.json). The repository champion
-is `stateful-gpt-legal-v1`. Its manifest pins the candidate sources, reproducible
+is `region-effect-full-v1`. Its manifest pins the candidate sources, reproducible
 ZIP, screen and independent confirm results, and offline Kaggle-shaped exec gate
 by SHA-256.
 
@@ -16,8 +16,8 @@ python3 -m arcagi3_baseline.exec_gate --manifest eval/manifests/exec-gate.json
 python3 scripts/build_champion_artifact.py --check
 ```
 
-The latest registered Kaggle kernel and completed submission still used
-`deterministic-legal-v1` (kernel version 5, submission `55067146`, public score
-`0.08`). That historical production state is recorded separately from the
-promoted repository champion. The next issue must run the stateful artifact in
-the real Kaggle kernel/submission environment before updating those fields.
+Kaggle kernel version 6 embeds the same connected-region/effect-history policy
+and completed its ordinary execution. Code-competition submission `55095979`
+completed its real rerun with public score `0.00`. This trails the historical
+`deterministic-legal-v1` score of `0.08`; both results remain explicit for the
+next promotion decision.
