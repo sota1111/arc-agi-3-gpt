@@ -7,6 +7,7 @@ gateway while tests use a deterministic fake without weakening the run contract.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import time
 import uuid
@@ -159,15 +160,34 @@ def _display_path(path: Path) -> str:
         return str(path)
 
 
-def evaluate(manifest_path: Path, factory: ExecutorFactory) -> dict[str, Any]:
-    """Execute all 36 isolated runs and write their machine-readable result."""
+def evaluate(
+    manifest_path: Path,
+    factory: ExecutorFactory,
+    *,
+    phase: str = "screen",
+    candidate_ids: list[str] | None = None,
+    artifact_path: Path | None = None,
+    cohort: str | None = None,
+    executor_fingerprint: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Execute an isolated screen or confirm cohort and write its result."""
     manifest = load_manifest(manifest_path)
+    if phase not in {"screen", "confirm"}:
+        raise ValueError("phase must be screen or confirm")
+    selected = set(candidate_ids or [])
+    if phase == "confirm" and not selected:
+        raise ValueError("confirm requires at least one selected candidate")
+    conditions = [
+        condition
+        for condition in manifest["conditions"]
+        if phase == "screen" or condition["id"] == "baseline" or condition["id"] in selected
+    ]
     runs: list[dict[str, Any]] = []
     chain_ids: set[str] = set()
     for game in manifest["games"]:
         for trial in range(manifest["trials"]):
             seed = manifest["seed_start"] + trial
-            for condition in manifest["conditions"]:
+            for condition in conditions:
                 chain_id = f"{game}-t{trial + 1}-{condition['id']}-{uuid.uuid4().hex}"
                 if chain_id in chain_ids:
                     raise RuntimeError("response chain id collision")
@@ -195,7 +215,7 @@ def evaluate(manifest_path: Path, factory: ExecutorFactory) -> dict[str, Any]:
         condition["id"]: _aggregate(
             [run for run in runs if run["condition"] == condition["id"]]
         )
-        for condition in manifest["conditions"]
+        for condition in conditions
     }
     raw_thresholds = manifest["promotion_thresholds"]
     thresholds = PromotionThresholds(**raw_thresholds)
@@ -206,6 +226,8 @@ def evaluate(manifest_path: Path, factory: ExecutorFactory) -> dict[str, Any]:
     }
     result = {
         "schema_version": 1,
+        "phase": phase,
+        "cohort": cohort or f"sot-2361-{phase}",
         "manifest": _display_path(manifest_path),
         "run_count": len(runs),
         "response_chains_unique": len(chain_ids) == len(runs),
@@ -217,8 +239,11 @@ def evaluate(manifest_path: Path, factory: ExecutorFactory) -> dict[str, Any]:
             "exec_compatibility" if any(d["promoted"] for d in decisions.values()) else None
         ),
         "non_promoted_action": "revert_candidate_and_document",
+        "executor_fingerprint": dict(executor_fingerprint or {}),
     }
-    output = ROOT / manifest["artifact"]
+    canonical = json.dumps(result, sort_keys=True, separators=(",", ":")).encode()
+    result["result_fingerprint_sha256"] = hashlib.sha256(canonical).hexdigest()
+    output = artifact_path or ROOT / manifest["artifact"]
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
     return result

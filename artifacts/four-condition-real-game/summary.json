@@ -1,0 +1,14 @@
+{
+  "candidate_change_reverted": true,
+  "confirm_artifact": "artifacts/four-condition-real-game/confirm.json",
+  "confirm_fingerprint": "5fa000c4ea4bff5fec886187bd8b15578088096b201ed7eb1fd5a09725ff4843",
+  "decision": "inconclusive",
+  "kaggle_submission_performed": false,
+  "next_gate": null,
+  "promotion_candidate": null,
+  "schema_version": 1,
+  "screen_artifact": "artifacts/four-condition-real-game/screen.json",
+  "screen_fingerprint": "cc77198b312b11074e17b9f1db07aba8d96ee615ea724ee394a8be701f21b037",
+  "selected_condition": "compaction",
+  "selection_reason": "diagnostic lexical tie-break; no screen condition passed promotion"
+}
