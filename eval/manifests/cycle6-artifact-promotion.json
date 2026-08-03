@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "issue": "SOT-2362",
+  "evaluation_evidence": {
+    "manifest": {
+      "path": "eval/manifests/four-condition-real-game.json",
+      "sha256": "ff6f7d0bd5f6ee98c7d25ae7f101621f94de1ab8f4d7d1b5210a50eef51917c7"
+    },
+    "screen": {
+      "path": "artifacts/four-condition-real-game/screen.json",
+      "sha256": "de159fe3c7016e54187eb9ea1646ae48ac43f59f40b8a18909bec0e94a367f43"
+    },
+    "confirm": {
+      "path": "artifacts/four-condition-real-game/confirm.json",
+      "sha256": "84134c606a42abe99f3881b58e5c58c4621138339575f8358c5d94ad6ae35f50"
+    },
+    "summary": {
+      "path": "artifacts/four-condition-real-game/summary.json",
+      "sha256": "4e79da84bb2c74ab81ccb7176b5633764dabbffc38a79d1e2c95eb22c459633e"
+    }
+  },
+  "packaging": {
+    "performed": false,
+    "reason": "No screen-to-confirm candidate passed promotion; candidate changes were reverted."
+  },
+  "exec_compatibility": {
+    "status": "not-run",
+    "reason": "Exec compatibility is gated behind a promoted candidate."
+  },
+  "preserved_release": {
+    "candidate": "region-effect-full-v1",
+    "candidate_manifest": "candidate/manifest.json",
+    "candidate_manifest_sha256": "d52f768c6b01230f8e7ecd9104f2f6aceeca2672473a94f9be22091761081380",
+    "champion_manifest": "champion/manifest.json",
+    "champion_manifest_sha256": "7887487c017bbb9b65425504ea273b6a22ef11a4fa1aa50bba5594a8243ceee9",
+    "artifact": "artifacts/candidates/region-effect-full-v1.zip",
+    "artifact_sha256": "c667ea758bf72eab13086ed9f1c29c22b5eb9306b9a0830568cbd5f2995ee0c1"
+  }
+}
