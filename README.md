@@ -18,6 +18,12 @@ python3 scripts/build_candidate_artifact.py --check
 python3 -m arcagi3_baseline.exec_gate --manifest eval/manifests/exec-gate.json
 ```
 
+The fixed real-game comparison contract is
+`eval/manifests/four-condition-real-game.json`. It describes 36 isolated runs
+(three games × three trials × four Responses configurations), records complete
+performance/token/cost metrics, and automatically applies the promotion limits.
+See `docs/four-condition-real-game-evaluation.md` for adapter and gate details.
+
 `main.py` accepts one JSON observation per line and emits exactly one JSON
 action per line. Diagnostics go to stderr. This makes a fresh subprocess run
 equivalent to the competition's `exec` loading boundary and keeps stdout safe
