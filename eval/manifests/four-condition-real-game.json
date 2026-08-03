@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "games": ["ls20", "ft09", "sp80"],
+  "trials": 3,
+  "seed_start": 2191,
+  "action_budget": 100,
+  "conditions": [
+    {"id": "baseline", "retain_reasoning": false, "compact_threshold": null},
+    {"id": "retained_reasoning", "retain_reasoning": true, "compact_threshold": null},
+    {"id": "compaction", "retain_reasoning": false, "compact_threshold": 120000},
+    {"id": "retained_reasoning_compaction", "retain_reasoning": true, "compact_threshold": 120000}
+  ],
+  "promotion_thresholds": {
+    "score_improvement": 0.0,
+    "completion_ratio": 1.0,
+    "token_ratio": 1.1,
+    "cost_ratio": 1.1,
+    "latency_ratio": 1.2
+  },
+  "gate_order": ["screen", "confirm"],
+  "submission_policy": "forbidden",
+  "artifact": "artifacts/four-condition-real-game/result.json"
+}
