@@ -141,3 +141,29 @@ def test_non_promoted_candidates_route_to_revert_and_document(tmp_path: Path) ->
     assert result["next_gate"] is None
     assert result["non_promoted_action"] == "revert_candidate_and_document"
     assert all(not decision["promoted"] for decision in result["promotion_decisions"].values())
+
+
+def test_confirm_is_independent_and_contains_only_baseline_and_selection(tmp_path: Path) -> None:
+    calls: list[dict[str, Any]] = []
+    result = evaluate(
+        MANIFEST,
+        lambda condition, chain: FakeGame(condition, chain, calls),
+        phase="confirm",
+        candidate_ids=["compaction"],
+        artifact_path=tmp_path / "confirm.json",
+        cohort="independent-confirm",
+        executor_fingerprint={"adapter": "test"},
+    )
+
+    assert result["phase"] == "confirm"
+    assert result["cohort"] == "independent-confirm"
+    assert result["run_count"] == 3 * 3 * 2
+    assert set(result["aggregates"]) == {"baseline", "compaction"}
+    assert result["response_chains_unique"] is True
+    assert result["executor_fingerprint"] == {"adapter": "test"}
+    assert len(result["result_fingerprint_sha256"]) == 64
+
+
+def test_confirm_requires_a_selected_candidate() -> None:
+    with pytest.raises(ValueError, match="confirm requires"):
+        evaluate(MANIFEST, lambda condition, chain: FakeGame(condition, chain, []), phase="confirm")

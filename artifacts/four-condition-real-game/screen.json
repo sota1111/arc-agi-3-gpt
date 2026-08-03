@@ -1,0 +1,725 @@
+{
+  "aggregates": {
+    "baseline": {
+      "actions": 76.66666666666667,
+      "api_cost_usd": 0.0,
+      "duration_seconds": 0.11985005288928126,
+      "input_tokens": 1293.3333333333333,
+      "levels_completed": 0.0,
+      "output_tokens": 920.0,
+      "reasoning_tokens": 0.0,
+      "score": 0.0
+    },
+    "compaction": {
+      "actions": 76.66666666666667,
+      "api_cost_usd": 0.0,
+      "duration_seconds": 0.0842778763294013,
+      "input_tokens": 1293.3333333333333,
+      "levels_completed": 0.0,
+      "output_tokens": 920.0,
+      "reasoning_tokens": 0.0,
+      "score": 0.0
+    },
+    "retained_reasoning": {
+      "actions": 76.66666666666667,
+      "api_cost_usd": 0.0,
+      "duration_seconds": 0.08233912866691956,
+      "input_tokens": 1293.3333333333333,
+      "levels_completed": 0.0,
+      "output_tokens": 920.0,
+      "reasoning_tokens": 0.0,
+      "score": 0.0
+    },
+    "retained_reasoning_compaction": {
+      "actions": 76.66666666666667,
+      "api_cost_usd": 0.0,
+      "duration_seconds": 0.0842701918962929,
+      "input_tokens": 1293.3333333333333,
+      "levels_completed": 0.0,
+      "output_tokens": 920.0,
+      "reasoning_tokens": 0.0,
+      "score": 0.0
+    }
+  },
+  "cohort": "sot-2361-screen-seeds-2191-2193",
+  "executor_fingerprint": {
+    "adapter": "offline-real-game-equal-policy-v1",
+    "comparison_validity": "inconclusive",
+    "environment_metadata_sha256": "2fcfce40d6a8560c441b68837c6c3730262d4b9b0dfdd7a45ebd593788b1f09e",
+    "openai_api_available": false,
+    "responses_features_exercised": false
+  },
+  "kaggle_submission_performed": false,
+  "manifest": "eval/manifests/four-condition-real-game.json",
+  "next_gate": null,
+  "non_promoted_action": "revert_candidate_and_document",
+  "phase": "screen",
+  "promotion_decisions": {
+    "compaction": {
+      "checks": {
+        "completion_non_degraded": true,
+        "cost_within_limit": true,
+        "latency_within_limit": true,
+        "score_improved": false,
+        "tokens_within_limit": true
+      },
+      "promoted": false,
+      "ratios": {
+        "completion": 1.0,
+        "cost": 1.0,
+        "latency": 0.7031943190484704,
+        "tokens": 1.0
+      }
+    },
+    "retained_reasoning": {
+      "checks": {
+        "completion_non_degraded": true,
+        "cost_within_limit": true,
+        "latency_within_limit": true,
+        "score_improved": false,
+        "tokens_within_limit": true
+      },
+      "promoted": false,
+      "ratios": {
+        "completion": 1.0,
+        "cost": 1.0,
+        "latency": 0.6870178751025277,
+        "tokens": 1.0
+      }
+    },
+    "retained_reasoning_compaction": {
+      "checks": {
+        "completion_non_degraded": true,
+        "cost_within_limit": true,
+        "latency_within_limit": true,
+        "score_improved": false,
+        "tokens_within_limit": true
+      },
+      "promoted": false,
+      "ratios": {
+        "completion": 1.0,
+        "cost": 1.0,
+        "latency": 0.7031302019878338,
+        "tokens": 1.0
+      }
+    }
+  },
+  "response_chains_unique": true,
+  "result_fingerprint_sha256": "cc77198b312b11074e17b9f1db07aba8d96ee615ea724ee394a8be701f21b037",
+  "run_count": 36,
+  "runs": [
+    {
+      "condition": "baseline",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.5208350510220043,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t1-baseline-a783808a2dc44006a9e2582455300f5f",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "retained_reasoning",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.19225992599967867,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t1-retained_reasoning-71470201734c43ada9aa03f0143d4935",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "compaction",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.2070251340046525,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t1-compaction-3d4fabb169ba459f9debdba4f28855c6",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "retained_reasoning_compaction",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.19400563999079168,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t1-retained_reasoning_compaction-f1574e40b0fa4a6694929eeed193eb33",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "baseline",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.1922224310110323,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t2-baseline-a8e843859e48426ebc8d224b1c040595",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "retained_reasoning",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.19494681298965588,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t2-retained_reasoning-baa84971c1df4a529aa878de23346813",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "compaction",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.1935299210017547,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t2-compaction-9caa7ad5f7b840b19624b6fa6e22803b",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "retained_reasoning_compaction",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.19188050902448595,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t2-retained_reasoning_compaction-61ecdcd8452d4b09819c328fc5de567f",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "baseline",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.19175517599796876,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t3-baseline-e3d7f073eb9f4e428ff619890ba808d5",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "retained_reasoning",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.1912520379992202,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t3-retained_reasoning-ffda2d0aa2234d90b84a2c58d7a2fa99",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "compaction",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.1965772439725697,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t3-compaction-c4e41a99cc0344c189912f4a1e215b1a",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "retained_reasoning_compaction",
+      "game": "ls20",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.210066512983758,
+        "input_tokens": 2000.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ls20-t3-retained_reasoning_compaction-711125738ae34befb3dcab7c1a9d88d0",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "baseline",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.05443680199095979,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t1-baseline-8f9223dbb3e043868f943989baf30620",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "retained_reasoning",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.045538736041635275,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t1-retained_reasoning-cb174db7d071437aa5a2a44307fb01eb",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "compaction",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.04554885398829356,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t1-compaction-c755f83bce6444aeaacf5da4c2fb0bf2",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "retained_reasoning_compaction",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.04614347202004865,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t1-retained_reasoning_compaction-3fcc6638bfbb41bfbd904c6f5f9daab1",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "baseline",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.04518697102321312,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t2-baseline-170a5d9bf9844129828d731b29a083d3",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "retained_reasoning",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.04676453897263855,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t2-retained_reasoning-71a53cb8f2f44c638986261e08ecd2c3",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "compaction",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.04592978401342407,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t2-compaction-4808497790e143b4b780b0736da67328",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "retained_reasoning_compaction",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.046112590993288904,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t2-retained_reasoning_compaction-e0923059d7cd477cac9a5924a30a0fa5",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "baseline",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.04607719602063298,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t3-baseline-090e221d25b342b5b6a15f94ddbdcd39",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "retained_reasoning",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.04651424702024087,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t3-retained_reasoning-3d96a19a8bcd40548de5e487e8afdaa7",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "compaction",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.04611944098724052,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t3-compaction-233356f3f442479980db2efbf6a5eea2",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "retained_reasoning_compaction",
+      "game": "ft09",
+      "metrics": {
+        "actions": 100,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.04635321500245482,
+        "input_tokens": 1100.0,
+        "levels_completed": 0,
+        "output_tokens": 1200.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "ft09-t3-retained_reasoning_compaction-6ba6355ad6b44bb78e2fdfafea25473c",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "baseline",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.012368750991299748,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t1-baseline-017bb6a5e22b493682ce9163bad5644c",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "retained_reasoning",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.007959911017678678,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t1-retained_reasoning-97fd7ea4dcad485e9d22142c53a57f15",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "compaction",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.007848549983464181,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t1-compaction-e27a6dbb8fa74997804ceb54d8a69899",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "retained_reasoning_compaction",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.007950041035655886,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t1-retained_reasoning_compaction-008a1bb4854847f2b27eba94fa2cf25d",
+      "seed": 2191,
+      "trial": 1
+    },
+    {
+      "condition": "baseline",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.007873908965848386,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t2-baseline-8dbfbd4f915347d89fa3850569c5c492",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "retained_reasoning",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.00787364097777754,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t2-retained_reasoning-b66e843353b94e20b913f6e8850d1262",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "compaction",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.007960593036841601,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t2-compaction-feb7239af17042c79a270b17139640fb",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "retained_reasoning_compaction",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.007746195013169199,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t2-retained_reasoning_compaction-eb75b9a22fcd4ca585c71099e00a15e7",
+      "seed": 2192,
+      "trial": 2
+    },
+    {
+      "condition": "baseline",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.007894188980571926,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t3-baseline-c7db81caf26d4ada9f954f85090531f4",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "retained_reasoning",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.007942306983750314,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t3-retained_reasoning-e7d57d912a87481f96b3a6d2347c1010",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "compaction",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.007961365976370871,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t3-compaction-9fa74da2737b496ba102cf491d59865f",
+      "seed": 2193,
+      "trial": 3
+    },
+    {
+      "condition": "retained_reasoning_compaction",
+      "game": "sp80",
+      "metrics": {
+        "actions": 30,
+        "api_cost_usd": 0.0,
+        "duration_seconds": 0.008173551002983004,
+        "input_tokens": 780.0,
+        "levels_completed": 0,
+        "output_tokens": 360.0,
+        "reasoning_tokens": 0.0,
+        "score": 0.0
+      },
+      "response_chain_id": "sp80-t3-retained_reasoning_compaction-a387a65f5a8d4716bf8e90e80699da05",
+      "seed": 2193,
+      "trial": 3
+    }
+  ],
+  "schema_version": 1
+}
